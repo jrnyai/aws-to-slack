@@ -36,7 +36,7 @@ exports.parse = event => {
 	const eventFirstSeen = _.get(detail, "CreatedAt");
 	const eventLastSeen = _.get(detail, "LastObservedAt");
 	fields.push({
-		title: "resource",
+		title: "Resource",
 		value: `${resources[0].Type} - ${resources[0].Id}`,
 		short: true
 	});
@@ -56,7 +56,7 @@ exports.parse = event => {
 		value: `${recomendationLink} - ${recomendationText}`
 	});
 	let color = event.COLORS.neutral;
-	if (severity > 30) {
+	if (severity > 39) {
 		color = event.COLORS.critical;
 	} else if (severity > 0) {
 		color = event.COLORS.warning;
