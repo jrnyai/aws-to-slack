@@ -25,6 +25,8 @@ const _ = require("lodash"),
 		"ses-complaint",
 		"ses-received",
 		"security-hub",
+		"ecr",
+		"config",
 		// Last attempt to parse, will match any message:
 		"generic"
 	];
