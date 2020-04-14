@@ -29,7 +29,7 @@ exports.parse = event => {
 	});
 	fields.push({
 		title: "Image Tags",
-		value: imageTags,
+		value: (imageTags || []).join(", "),
 		short: false
 	});
 
