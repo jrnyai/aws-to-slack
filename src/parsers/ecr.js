@@ -55,7 +55,7 @@ exports.parse = event => {
 		short: true
 	});
 
-	if(!lowSeverity && !mediumSeverity && !highSeverity && !criticalSeverity) {
+	if((lowSeverity+mediumSeverity+highSeverity+criticalSeverity) < 1) {
 		console.log("no issues to report");
 		process.exit;
 	}
