@@ -54,24 +54,22 @@ exports.parse = event => {
 		value: lowSeverity || 0,
 		short: true
 	});
-
-	if((lowSeverity+mediumSeverity+highSeverity+criticalSeverity) < 1) {
-		console.log("no issues to report");
-		process.exit;
-	}
-	if(lowSeverity>0) {
-		color = event.COLORS.accent;
-	}
-	if(mediumSeverity>0) {
-		color = event.COLORS.warning;
-	}
-	if(highSeverity>0) {
-		color = event.COLORS.critical;
-	}
 	if(criticalSeverity>0) {
 		color = event.COLORS.critical;
 	}
-
+	else if(highSeverity>0) {
+		color = event.COLORS.critical;
+	}
+	else if(mediumSeverity>0) {
+		color = event.COLORS.warning;
+	}
+	else if (lowSeverity>0) {
+		color = event.COLORS.accent;
+	}
+	else{
+		// ignore events with no findings
+		return true;
+	}
 	return event.attachmentWithDefaults({
 		title: title,
 		author_name: "AWS ECR",
